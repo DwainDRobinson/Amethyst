@@ -1,0 +1,51 @@
+{
+  "name": "amethyst",
+  "version": "1.0.0",
+  "description": "Microservice for all interactions for creating and managing users and their details (User Manager)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "refresh": "rm -rf node_modules/ && npm i && npm dedupe",
+    "serve:dev": "nodemon index.js",
+    "start": "node index.js"
+  },
+  "keywords": [
+    "nodejs, express, mongodb, mongoose",
+    "nosql"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DwainDRobinson/Amethyst.git"
+  },
+  "author": "Dwain Robinson",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DwainDRobinson/Amethyst/issues"
+  },
+  "homepage": "https://github.com/DwainDRobinson/Amethyst#readme",
+  "dependencies": {
+    "@babel/core": "^7.14.0",
+    "@babel/preset-env": "^7.14.0",
+    "@babel/register": "^7.13.16",
+    "bcrypt": "^5.0.1",
+    "compression": "^1.7.4",
+    "core-js": "^3.11.1",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "express-validator": "^6.10.1",
+    "helmet": "^4.5.0",
+    "moment": "^2.29.1",
+    "mongoose": "^5.12.7",
+    "mongoose-sequence": "^5.3.1",
+    "nocache": "^2.1.0",
+    "regenerator-runtime": "^0.13.7",
+    "response-time": "^2.3.2",
+    "swagger-jsdoc": "^5.0.1",
+    "swagger-ui-express": "^4.1.6",
+    "winston": "^3.3.3"
+  },
+  "devDependencies": {
+    "dotenv": "^8.2.0",
+    "nodemon": "^2.0.7"
+  }
+}

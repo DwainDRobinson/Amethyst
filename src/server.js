@@ -52,12 +52,16 @@ logger.info('Loaded error handler middleware.');
 server.use(requestResponse);
 logger.info('Loaded request/response middleware.');
 
-//Router middleware
+//App middleware
 server.use(appRouter);
 logger.info('Loaded server routes middleware.');
 
+//User service middleware
+server.use(userRouter);
+logger.info('Loaded user routes middleware.');
+
 //Swagger middleware
-server.use('/user-service/v1/swagger', swagger);
+server.use(swagger);
 logger.info('Loaded swagger documentation middleware.');
 
 export default http.createServer(server);

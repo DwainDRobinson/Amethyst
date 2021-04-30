@@ -1,9 +1,12 @@
 'use strict';
+
 import mongoose from 'mongoose';
+import mongooseSequence from 'mongoose-sequence';
 import bcrypt from 'bcrypt';
 import config from '../config';
 
 const { Schema } = mongoose;
+const autoIncrement = mongooseSequence(mongoose);
 const { NODE_ENV } = config;
 
 const saltRounds = 10;
@@ -55,7 +58,15 @@ userSchema.methods.comparePassword = function (password) {
   return bcrypt.compareSync(password, user.password);
 };
 
+/**
+ * Set the autoCreate option on models if not on production
+ */
 userSchema.set('autoCreate', NODE_ENV !== 'production');
+
+/**
+ * Increments userId everytime an instances is created
+ */
+userSchema.plugin(autoIncrement, { inc_field: 'userId' });
 
 //Create User model out of userSchema
 const User = mongoose.model('User', userSchema);

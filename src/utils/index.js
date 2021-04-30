@@ -1,3 +1,7 @@
+'use strict';
+
+import { validationResult } from '../validations';
+
 const requestResponse = (req, res, next) => {
   console.info(`${req.method} ${req.originalUrl}`);
   res.on('finish', () => {
@@ -15,4 +19,12 @@ const errorHandler = (err, req, res, next) => {
   res.status(err.status || 500).send(err.message);
 };
 
-export { requestResponse, errorHandler };
+const validationHandler = (req, res, next) => {
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    return res.status(400).json({ errors: errors.array() });
+  }
+  next();
+};
+
+export { requestResponse, errorHandler, validationHandler };

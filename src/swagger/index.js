@@ -1,3 +1,5 @@
+'use strict';
+
 import express from 'express';
 import swaggerJsdoc from 'swagger-jsdoc';
 import swaggerUi from 'swagger-ui-express';
@@ -29,9 +31,13 @@ const options = {
 
 const openApiSpecification = swaggerJsdoc(options);
 
-router.use('/docs', swaggerUi.serve, swaggerUi.setup(openApiSpecification, { explorer: true }));
+router.use(
+  '/user-service/v1/swagger/docs',
+  swaggerUi.serve,
+  swaggerUi.setup(openApiSpecification, { explorer: true })
+);
 
-router.get('/swagger.json', (req, res) => {
+router.get('/user-service/v1/swagger/swagger.json', (_, res) => {
   res.setHeader('Content-Type', 'application/json');
   res.send(openApiSpecification);
 });

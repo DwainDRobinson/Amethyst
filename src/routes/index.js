@@ -1,4 +1,6 @@
-import userRouter from './userRouter';
-import appRouter from './appRouter';
+'use strict';
+
+import userRouter from './UserRouter';
+import appRouter from './AppRouter';
 
 export { userRouter, appRouter };

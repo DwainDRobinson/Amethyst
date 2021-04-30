@@ -36,6 +36,7 @@
     "helmet": "^4.5.0",
     "moment": "^2.29.1",
     "mongoose": "^5.12.7",
+    "mongoose-sequence": "^5.3.1",
     "nocache": "^2.1.0",
     "regenerator-runtime": "^0.13.7",
     "response-time": "^2.3.2",

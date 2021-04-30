@@ -2,25 +2,27 @@
 
 import { User } from '../models';
 
-const getUsers = async () => {
+const queryOps = { __v: 0, _id: 0 };
+
+exports.getUsers = async query => {
   try {
-    const users = await User.find({});
+    const users = await User.find(query, queryOps);
     return users;
   } catch (err) {
     console.log('Error getting all users: ', err);
   }
 };
 
-const getUserById = async userId => {
+exports.getUserById = async userId => {
   try {
-    const user = await User.findById(userId);
+    const user = await User.findById(userId, queryOps);
     return user;
   } catch (err) {
     console.log(`Error getting user: ${userId}: `, err);
   }
 };
 
-const createUser = async payload => {
+exports.createUser = async payload => {
   try {
     const user = new User(payload);
     const createdUser = await user.save();
@@ -30,7 +32,7 @@ const createUser = async payload => {
   }
 };
 
-const updateUser = async (userId, payload) => {
+exports.updateUser = async (userId, payload) => {
   try {
     const user = await User.findByIdAndUpdate(userId, payload, {
       new: true
@@ -41,7 +43,7 @@ const updateUser = async (userId, payload) => {
   }
 };
 
-const deleteUser = async userId => {
+exports.deleteUser = async userId => {
   try {
     const user = await User.findByIdAndDelete(userId);
     return !!user;
@@ -49,5 +51,3 @@ const deleteUser = async userId => {
     console.log(`Error deleting  user: ${userId}: `, err);
   }
 };
-
-export { getUsers, getUserById, createUser, updateUser, deleteUser };

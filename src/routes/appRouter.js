@@ -1,6 +1,10 @@
+'use strict';
+
 import express from 'express';
 
-const router = express.Router();
+const { Router } = express;
+
+const router = Router();
 
 router.get('/user-service/v1/', (_, res) => {
   res.send('Welcome to Amethyst User Manager Service!').status(200);

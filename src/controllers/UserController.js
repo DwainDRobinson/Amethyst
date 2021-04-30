@@ -1,8 +1,11 @@
+'use strict';
+
 import { UserService } from '../services';
 
-const getUsers = async (_, res, next) => {
+exports.getUsers = async (req, res, next) => {
   try {
-    const response = await UserService.getUsers();
+    const { query } = req;
+    const response = await UserService.getUsers(query);
     res.send(response);
   } catch (err) {
     console.log(`Error getting users: `, err);
@@ -10,7 +13,7 @@ const getUsers = async (_, res, next) => {
   }
 };
 
-const getUserById = async (req, res, next) => {
+exports.getUserById = async (req, res, next) => {
   try {
     const { userId } = req.params;
     const response = await UserService.getUserById(userId);
@@ -21,7 +24,7 @@ const getUserById = async (req, res, next) => {
   }
 };
 
-const createUser = async (req, res, next) => {
+exports.createUser = async (req, res, next) => {
   try {
     const { body } = req;
     const response = await UserService.createUser(body);
@@ -32,7 +35,7 @@ const createUser = async (req, res, next) => {
   }
 };
 
-const updateUser = async (req, res, next) => {
+exports.updateUser = async (req, res, next) => {
   try {
     const { userId } = req.params;
     const { body } = req;
@@ -44,7 +47,7 @@ const updateUser = async (req, res, next) => {
   }
 };
 
-const deleteUser = async (req, res, next) => {
+exports.deleteUser = async (req, res, next) => {
   try {
     const { userId } = req.params;
     const response = await UserService.deleteUser(userId);
@@ -54,5 +57,3 @@ const deleteUser = async (req, res, next) => {
     next(err);
   }
 };
-
-export { getUsers, getUserById, createUser, updateUser, deleteUser };

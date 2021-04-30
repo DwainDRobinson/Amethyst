@@ -9,6 +9,7 @@ import cors from 'cors';
 import responseTime from 'response-time';
 
 import { requestResponse, errorHandler } from './utils';
+import logger from './logger';
 import swagger from './swagger';
 import { userRouter, appRouter } from './routes';
 
@@ -20,43 +21,43 @@ server.set('trust proxy', true);
 
 // Enabled cors
 server.use(cors());
-console.log('CORS enabled.');
+logger.info('CORS enabled.');
 
 //Helmet middleware
 server.use(helmet());
 server.use(helmet.referrerPolicy());
-console.log('Loaded helmet middleware.');
+logger.info('Loaded helmet middleware.');
 
 server.use(noCache());
-console.log('Loaded no-cache middleware.');
+logger.info('Loaded no-cache middleware.');
 
 //Compression middleware
 server.use(compression());
-console.log('Loaded compression middleware.');
+logger.info('Loaded compression middleware.');
 
 //BodyParser middleware
 server.use(express.urlencoded({ limit: '50Mb', extended: false }));
 server.use(express.json({ limit: '50Mb' }));
-console.log('Loaded body-parser middleware.');
+logger.info('Loaded body-parser middleware.');
 
 // Response time middleware
 server.use(responseTime());
-console.log('Loaded response time middleware.');
+logger.info('Loaded response time middleware.');
 
 //error handler
 server.use(errorHandler);
-console.log('Loaded error handler middleware.');
+logger.info('Loaded error handler middleware.');
 
 //route handler with request/response
 server.use(requestResponse);
-console.log('Loaded request/response middleware.');
+logger.info('Loaded request/response middleware.');
 
 //Router middleware
 server.use(appRouter);
-console.log('Loaded server routes middleware.');
+logger.info('Loaded server routes middleware.');
 
 //Swagger middleware
 server.use('/user-service/v1/swagger', swagger);
-console.log('Loaded swagger documentation middleware.');
+logger.info('Loaded swagger documentation middleware.');
 
 export default http.createServer(server);

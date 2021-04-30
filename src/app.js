@@ -3,6 +3,7 @@
 import server from './server';
 import config from './config';
 import models from './models';
+import logger from './logger';
 
 /**
  * Start web server
@@ -11,9 +12,9 @@ const initServer = async () => {
   const { PORT, HOST } = config;
   try {
     await server.listen(PORT, HOST);
-    console.log(`Host: ${HOST} listening on port: ${PORT}`);
+    logger.info(`Host: ${HOST} listening on port: ${PORT}`);
   } catch (err) {
-    console.log(`Host: ${HOST} started with error: ${err}`);
+    logger.info(`Host: ${HOST} started with error: ${err}`);
     throw err;
   }
 };
@@ -27,13 +28,13 @@ const initDB = async () => {
   try {
     await source.connect(url, options);
   } catch (e) {
-    console.log(`Error connecting to db: ${e}`);
+    logger.info(`Error connecting to db: ${e}`);
     throw e;
   }
 };
 
 const init = async () => {
-  console.log('Starting app...');
+  logger.info('Starting app...');
   // await initDB();
   await initServer();
 };

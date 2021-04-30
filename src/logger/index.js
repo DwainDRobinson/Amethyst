@@ -3,16 +3,18 @@ import path from 'path';
 import config from '../config';
 const { NODE_ENV, LOGGER_DIRECTORY } = config;
 const { createLogger, format, transports } = winston;
-const { splat, combine, printf, colorize, simple } = format;
+const { splat, combine, printf, colorize, simple, timestamp } = format;
 const { File, Console } = transports;
 
-const myFormat = printf(({ level, message, meta }) => {
-  return `${level} ${message} ${meta ? JSON.stringify(meta) : ''}`;
+const myFormat = printf(({ level, message, meta, timestamp }) => {
+  return `${timestamp} ${level} ${message} ${meta ? JSON.stringify(meta) : ''}`;
 });
+
+const fileMaxSize = '2MB';
 
 const logger = createLogger({
   level: 'info',
-  format: combine(splat(), myFormat),
+  format: combine(splat(), timestamp(), myFormat),
   defaultMeta: {
     service: 'amethyst'
   },
@@ -20,20 +22,20 @@ const logger = createLogger({
     new File({
       filename: path.resolve(`${LOGGER_DIRECTORY}/out.log`),
       level: 'info',
-      maxsize: '2MB',
+      maxsize: fileMaxSize,
       tailable: true
     }),
     new File({
       filename: path.resolve(`${LOGGER_DIRECTORY}/error.log`),
       level: 'error',
-      maxsize: '2MB',
+      maxsize: fileMaxSize,
       tailable: true
     })
   ],
   exceptionHandlers: [
     new File({
       filename: path.resolve(`${LOGGER_DIRECTORY}/exceptions.log`),
-      maxsize: '2MB',
+      maxsize: fileMaxSize,
       tailable: true
     })
   ]
@@ -50,3 +52,5 @@ if (NODE_ENV !== 'production') {
     })
   );
 }
+
+export default logger;

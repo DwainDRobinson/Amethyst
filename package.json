@@ -27,6 +27,7 @@
     "@babel/core": "^7.14.0",
     "@babel/preset-env": "^7.14.0",
     "@babel/register": "^7.13.16",
+    "bcrypt": "^5.0.1",
     "compression": "^1.7.4",
     "core-js": "^3.11.1",
     "cors": "^2.8.5",
@@ -38,7 +39,8 @@
     "nocache": "^2.1.0",
     "regenerator-runtime": "^0.13.7",
     "response-time": "^2.3.2",
-    "swagger-jsdoc": "^7.0.0-rc.6",
+    "swagger-jsdoc": "^5.0.1",
+    "swagger-ui-express": "^4.1.6",
     "winston": "^3.3.3"
   },
   "devDependencies": {

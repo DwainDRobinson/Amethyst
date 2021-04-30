@@ -1,7 +1,0 @@
-# prettierrc.yaml file for formatting
-trailingComma: "none"
-quoteProps: "consistent"
-printWidth: 100
-proseWrap: "always"
-arrowParens: "avoid"
-singleQuote: true

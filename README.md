@@ -2,7 +2,7 @@
 
 Microservice for all interactions for creating and managing users and their details (User Manager)
 
-## Requirements
+# Requirements
 
 For development, you will only need Node.js and a node global package (NPM) installed in your
 environement.
@@ -44,13 +44,13 @@ command, just open again the command line and be happy.
 
 ---
 
-## Install
+# Install
 
     $ git clone https://github.com/DwainDRobinson/Amethyst.git
     $ cd Amethyst
     $ npm install
 
-## Configure app
+# Configure app
 
 Amethyst utilizes dotenv[https://github.com/motdotla/dotenv] for environment variable configuration.
 
@@ -60,7 +60,16 @@ Amethyst utilizes dotenv[https://github.com/motdotla/dotenv] for environment var
 - LOGGER_DIRECTORY (directory for log files)
 - MONGODB_URL (mongo db url for connection)
 
-## Running the project (development mode)
+# API Definition
+
+Amethyst utilizes Swagger and OpenAPI 3.0.3 Specification [https://swagger.io/specification/] for
+documentation of APIs.
+
+    ${HOST}:${PORT}/user-service/v1/swagger/docs
+
+Navigate to link above to see API Definitions.
+
+# Running the project (development mode)
 
 Amethyst utilizes nodemon [https://www.npmjs.com/package/nodemon] auto-restart of server after
 changes and edits.
@@ -69,10 +78,10 @@ changes and edits.
 
 See `package.json` for description of task.
 
-## Start application (production mode)
+# Start application (production mode)
 
     $ npm start
 
-## Deployment
+# Deployment
 
 Coming Soon...

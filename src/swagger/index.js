@@ -11,7 +11,7 @@ const router = Router();
 const { version } = require('../../package.json');
 
 const definition = {
-  openapi: '3.0.0',
+  openapi: '3.0.3',
   info: {
     version,
     title: 'User Microservice API Definition',

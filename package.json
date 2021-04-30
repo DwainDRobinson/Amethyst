@@ -1,0 +1,19 @@
+{
+  "name": "amethyst",
+  "version": "1.0.0",
+  "description": "Microservice for all interactions for creating and managing users and their details (User Manager)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DwainDRobinson/Amethyst.git"
+  },
+  "author": "Dwain Robinson",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DwainDRobinson/Amethyst/issues"
+  },
+  "homepage": "https://github.com/DwainDRobinson/Amethyst#readme"
+}
